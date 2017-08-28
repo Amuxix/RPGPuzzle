@@ -1,0 +1,273 @@
+html, body {
+    background-color: black;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 2.5vmin;
+    user-select: none;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    grid-template-rows: 4fr 1fr;
+    text-align: center;
+    height: 100vmin;
+    width: 160vmin;
+    box-sizing: border-box;
+}
+
+.square-area {
+    height: 80vmin;
+    width: 140vmin;
+    display: grid;
+    /*grid-gap: 1%;*/
+    //grid-template-columns: repeat(7, 1fr);
+    box-sizing: border-box;
+}
+
+
+@-webkit-keyframes pulse {
+    50% {
+        background-color: #ffd17e;
+    }
+}
+@keyframes pulse {
+    50% {
+        background-color: #ffd17e;
+    }
+}
+.square-area > div {
+    font-size: 9vmin;
+    box-shadow: inset 0 0 1vmin 1vmin black;
+}
+.square-area > div:not(.used):not(.player):hover,
+.square-area > div:not(.used):not(.player):active {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.ui {
+    padding:4px 8px;
+    border:3px solid transparent;
+    border-image:url(../images/frameBorder.png) 3 round;
+    border-radius:2px;
+    box-shadow:0 0 1px 2px rgba(0,0,0,0.5),0 2px 4px rgba(0,0,0,0.25),0 0 6px 1px rgba(0,0,0,0.5) inset;
+    transition: opacity 0.1s ease-out;
+    text-shadow: 0 1px 1px #000;
+    color: #ccc;
+    box-sizing: border-box;
+}
+
+.description {
+    grid-column: 1;
+    grid-row: 2;
+    box-sizing: border-box;
+    display: grid;
+    height: 100%;
+    text-align: left
+}
+
+.sidebar {
+    grid-column: 2;
+    grid-row: 1/3;
+    height: 100%;
+    width: 20vmin;
+    grid-template-rows: 2fr 3fr;
+    box-sizing: border-box;
+}
+
+.floor {
+    grid-column: 1;
+    grid-row: 1;
+    box-sizing: border-box;
+    height: 30%;
+    width: inherit;
+}
+
+.stats {
+    grid-column: 1;
+    grid-row: 2/4;
+    display: grid;
+    grid-template-areas:
+            "hp level"
+            "magic dmg"
+            "keys xp";
+    position: absolute;
+    top: 30%;
+    bottom: 0;
+    width: inherit;
+}
+
+p {
+    font-size: 3vmin;
+}
+
+.name {
+    grid-area: name;
+    font-size: 5vmin;
+}
+
+.desc {
+    grid-area: desc;
+}
+
+.hp {
+    grid-area: hp;
+}
+
+.lvl {
+    grid-area: level;
+}
+
+.magic {
+    grid-area: magic;
+}
+
+.dmg {
+    grid-area: dmg;
+}
+
+.keys {
+    grid-area: keys;
+}
+
+.xp {
+    grid-area: xp;
+}
+
+.poisoned {
+    color: #60850a;
+}
+
+.player {
+    box-shadow: inset 0 0 .3vmin .5vmin white !important;
+    background-color: black;
+    color: #ccc;
+}
+
+.monster {
+    background-color: red;
+}
+
+.trap {
+    background-color: orangered;
+}
+
+.spell {
+    background-color: teal;
+}
+
+.empty {
+    background-color: #568ccc;
+}
+
+.helpful, .treasure {
+    background-color: green;
+}
+
+.door {
+    background-color: black;
+    color: #ccc;
+}
+
+.used {
+    color: black;
+    background: black;
+}
+
+.overlay {
+    background: black;
+    position: absolute;
+    top: 33vmin;
+    width: 140vmin;
+    bottom: 33vmin;
+    z-index: 100000001;
+}
+
+.level-up {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 200ms, opacity 200ms linear;
+}
+
+.level-up > h1 {
+    grid-column: 1 / span 3;
+    color: #cccccc;
+}
+
+.level-up > div {
+    box-shadow: inset 0 0 2vmin 2vmin black;
+    font-size: 9vmin;
+    line-height: 16vmin;
+    background-color: #cccccc;
+    transition: background-color 100ms ease-out;
+}
+
+.level-up > div:active {
+    background-color: #568ccc;
+}
+
+.hidden {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+#game-over {
+    color: #cccccc;
+    font-size: 25vmin;
+    bottom: 0;
+    top: 0;
+    width: 161vmin;
+    line-height: 80vmin;
+    background-color: rgba(0, 0, 0, 0.90);
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 200ms, opacity 200ms linear;
+}
+
+#death-cause {
+    position: absolute;
+    width: 100%;
+    top: 15vmin;
+    height: 10vmin;
+    font-size: 4vmin;
+}
+
+#score {
+    position: absolute;
+    width: 100%;
+    top: -23vmin;
+    height: 10vmin;
+    font-size: 4vmin;
+}
+
+.monster-description {
+    grid-template-areas:
+            "name ... ..."
+            "hp dmg xp";
+}
+
+.monster-description > div > p {
+    margin: 1vmin;
+}
+
+.other-description {
+    grid-template-areas:
+            "name name name"
+            "desc desc desc";
+}

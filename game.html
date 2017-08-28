@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@title</title>
+    <link rel="stylesheet" media="screen" href="stylesheets/game.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.3/seedrandom.min.js"></script>
+    <script src="javascripts/game.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="game">
+    <div class="square-area"></div>
+    <div class="sidebar">
+        <div class="floor ui">
+            <h1>Floor</h1>
+            <p id="floor">1</p>
+        </div>
+        <div class="stats ui">
+            <div class="hp">
+                HP:
+                <p id="hp">5</p>
+            </div>
+            <div class="lvl">
+                Level:
+                <p id="lvl">1</p>
+            </div>
+            <div class="magic">
+                Magic:
+                <p id="magic">2</p>
+            </div>
+            <div class="dmg">
+                Attack:
+                <p id="dmg">1</p>
+            </div>
+            <div class="keys">
+                Keys:
+                <p id="keys">0</p>
+            </div>
+            <div class="xp">
+                Exp:
+                <p id="xp">0</p>
+            </div>
+        </div>
+    </div>
+    <div class="description ui"></div>
+    <div class="overlay level-up hidden">
+        <h1>Level Up!</h1>
+        <div id="level-up-hp">+Hit Points</div>
+        <div id="level-up-dmg">+Damage</div>
+        <div id="level-up-magic">+Magic</div>
+    </div>
+    <div class="overlay hidden" id="game-over">
+        <div>Game Over!</div>
+        <p id="death-cause">You died!</p>
+        <p id="score">0</p>
+    </div>
+</div>
+</body>
+</html>
